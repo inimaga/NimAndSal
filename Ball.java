@@ -1,9 +1,9 @@
-/**
+ /**
  * Models a simple solid sphere. 
  * This class represents a Ball object. When combined with the GameArena class,
  * instances of the Ball class can be displayed on the screen.
  */
-public class Ball 
+public class Ball
 {
 	// The following instance variables define the
 	// information needed to represent a Ball
@@ -13,14 +13,13 @@ public class Ball
 	private double xPosition;			// The X coordinate of this Ball
 	private double yPosition;			// The Y coordinate of this Ball
 	private double size;				// The diameter of this Ball
-	private String colour = "WHITE";	// The colour of this Ball
-
-										// Permissable colours are 8 bit hexadecimal 
-                                        // RGB values in the format #RRGGBB. e.g.
-                                        //
-                                        // Pure red is FF0000
-                                        // Pure red is 00FF00
-                                        // Pure red is 0000FF
+	private String colour;	            // The colour of this Ball
+										// Permissable colours are 
+                                        // "BLACK", "BLUE", "CYAN", "DARKGREY", "GREY", "GREEN", "LIGHTGREY", "MAGENTA", "ORANGE", "PINK", "RED", "WHITE", "YELLOW".
+                                        // Alternatively, 8 bit hexadecimal RGB values can be given, in the format "#RRGGBB".  e.g.
+                                        // Pure red is "FF0000"
+                                        // Pure red is "00FF00"
+                                        // Pure red is "0000FF"
 
 	/**
 	 * Obtains the current position of this Ball.
@@ -76,13 +75,70 @@ public class Ball
 		return colour;
 	}
 
-
-	public Ball(double x, double y, double diameter, String col)
+    /**
+     * Constructor. Creates an instance of Ball with the given chatacteristics.
+     *
+     * @param x The initial location of the centre of the Ball on the screen, in the X dimension.
+     * @param y The initial location of the centre of the Ball on the screen, in the Y dimension.
+     * @param diameter The diameter of the Ball, in pixels.
+     * @param col The colour of the Ball. Colour can be expressed as either a friendly name, including:
+     * "BLACK", "BLUE", "CYAN", "DARKGREY", "GREY", "GREEN", "LIGHTGREY", "MAGENTA", "ORANGE", "PINK", "RED", "WHITE", "YELLOW".
+     * Alternatively, 8 bit hexadecimal RGB values can be given, in the format "#RRGGBB". e.g. "#FF0000" is a pure read, "#0000FF" is pure blue, etc.
+     */
+	 
+	 
+	 //Addition of my code began here
+	
+	double directionX = 1;
+	double directionY = 1;
+	 
+	public Ball (double x, double y, double diameter, String col)
 	{
 		xPosition = x;
 		yPosition = y;
-
 		size = diameter;
 		colour = col;
-	}	
+	}
+	
+	
+	public void ballmovement() {
+		
+		//Code handling movement begins here
+		if (directionX == 1) {
+			xPosition = this.xPosition + 1;
+		}
+		else if (directionX == 2) {
+			
+			xPosition = this.xPosition - 1;
+		}
+	
+		if (directionY == 1) { 
+			
+			yPosition = this.yPosition + 1;
+		}
+		else if (directionY == 2) {
+			
+			yPosition = this.yPosition - 1;
+		}
+		//Code handling movement ends here
+		
+		
+		//Code handling direction begins here
+		if (this.xPosition == 882) {
+		
+			directionX = 2;
+		}
+		else if (this.xPosition == 18) {
+			directionX = 1;
+		}
+	
+		if (this.yPosition == 782){
+			directionY = 2;
+		}
+		else if (this.yPosition == 18) {
+			directionY = 1;
+		}
+		//Code handling direction ends here
+
+		}
 }
