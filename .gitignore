@@ -1,5 +1,7 @@
 ##A Git ignore file specifying which files and folders Git shouldn't track.. Helpful in keeping the repo tidy.
 
+
 IgnoredFiles/
 *.class
 main2.java
+Main - Copy.java
