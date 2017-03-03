@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.*;
 
 public class Main
 {
@@ -15,7 +16,8 @@ public class Main
 	
 	double bx = 0;
 	double by = 0;
-
+	int j = 0;
+	
 	
 	Rectangle body = new Rectangle(450,775,70,20,"Blue");		//Creation of user controlled Character begins here
 	Rectangle head = new Rectangle(450,760,20,15,"RED");
@@ -34,9 +36,14 @@ public class Main
 	
 	boolean userMovement;
 	boolean gun = false;
-	boolean shotFired = false;
+	double shotFired = 0;
 	
-	Ball bullet = new Ball(0,0,10,"RED");		//Bullet of protagonist
+	//Ball bullet = new Ball(0,0,10,"RED");		//Bullet of protagonist
+	
+	Ball damn = new Ball(0,0,10,"RED");
+	
+	Random case1 = new Random();
+	Random case2 = new Random();
 	
 	
 	while (c == 0){
@@ -65,24 +72,15 @@ public class Main
 	
 	
 	//Code handling bullets shot starts here
+
 	if (alpha.upPressed()){
-		bullet.setXPosition(bx);
-		bullet.setYPosition(by);
-		alpha.addBall(bullet);
-
-	}
-		bullet.setYPosition((bullet.getYPosition() - 1));
-
-	bx = head.getXPosition();
-	by = head.getYPosition() - 15;
-	//Code handling bullets shot ends here
-	
-	b = bullet.getYPosition();
-	
-	if (alpha.downPressed()){
-		alpha.removeBall(bullet);
-
-	}
+		
+		damn.generateBullet(alpha);
+		
+		}
+		
+		
+		
 	}
 	
 	}
