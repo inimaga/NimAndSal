@@ -1,3 +1,6 @@
+import java.util.*;
+
+ 
  /**
  * Models a simple solid sphere. 
  * This class represents a Ball object. When combined with the GameArena class,
@@ -91,6 +94,10 @@ public class Ball
 	
 	double directionX = 1;
 	double directionY = 1;
+	
+	GameArena alpha;
+	Ball[] Nballs;
+	Ball bullet;
 	 
 	public Ball (double x, double y, double diameter, String col)
 	{
@@ -141,4 +148,48 @@ public class Ball
 		//Code handling direction ends here
 
 		}
+		
+	void generate(GameArena alpha, int z)
+	{
+		this.alpha = alpha;
+		
+		int i = 0;
+		
+		Random case1 = new Random();
+		Random case2 = new Random();
+		
+
+		Nballs = new Ball[z];
+		
+		for (i = 0; i < z ; i++) {
+		double x = case1.nextInt(882) + 18;
+		double y = case1.nextInt(782) + 18;
+		int col = case2.nextInt(12) + 1 ;
+		String[] colour = {"#FF00CE","#00FF11","#FDFF00","#00FFD2","#FCFFC8","#FF9600","RED","#D00031","#C987EB","#E30066","#FFED00","#57AB27","#FFFFFF"};
+			
+		Nballs[i] = new Ball(x,y,10,colour[col]);
+		alpha.addBall(Nballs[i]);
+		}
+		
+		
+	}
+	void generateBullet(GameArena alpha)
+	{
+		this.alpha = alpha;
+		
+		Random case1 = new Random();
+		Random case2 = new Random();
+		
+		
+		double x = case1.nextInt(882) + 18;
+		double y = case1.nextInt(782) + 18;
+		int col = case2.nextInt(12) + 1 ;
+		String[] colour = {"#FF00CE","#00FF11","#FDFF00","#00FFD2","#FCFFC8","#FF9600","RED","#D00031","#C987EB","#E30066","#FFED00","#57AB27","#FFFFFF"};
+			
+		bullet = new Ball(x,y,10,colour[col]);	
+		alpha.addBall(bullet);
+		
+	}
+	
+	
 }
