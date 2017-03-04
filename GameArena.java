@@ -106,6 +106,8 @@ public class GameArena
                     left = true;
                 if (keyEvent.getCode() == KeyCode.RIGHT) 
                     right = true;
+				if (keyEvent.getCode() == KeyCode.SPACE) 
+                    space = true;
             }
         };
 
@@ -119,6 +121,8 @@ public class GameArena
                     left = false;
                 if (keyEvent.getCode() == KeyCode.RIGHT) 
                     right = false;
+				if (keyEvent.getCode() == KeyCode.SPACE) 
+                    space = false;
             }
         };
 
