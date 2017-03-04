@@ -141,7 +141,7 @@ public class Ball
 			directionX = 1;
 		}
 	
-		if (this.yPosition == 400){
+		if (this.yPosition == 400){			//Change the value of 400 to 782 if you do not wish to restrict movement to first half
 			directionY = 2;
 		}
 		else if (this.yPosition == 18) {
