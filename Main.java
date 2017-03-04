@@ -9,14 +9,13 @@ public class Main
 	
 	double b = 0;
 	double c = 0;		//Variable used for setting infinite loops
-	double d = 0;
-	double e = 0;
-	double directionX = 1; //This should represent the movement direction of the ball on the X axis
-	double directionY = 1; //This should represent the movement direction of the ball on the Y axis
 	
 	double bx = 0;
 	double by = 0;
 	int j = 0;
+	
+	int shotFired = 0;
+	int m = 0;
 	
 	
 	Rectangle body = new Rectangle(450,775,70,20,"Blue");		//Creation of user controlled Character begins here
@@ -24,30 +23,41 @@ public class Main
 	Rectangle leg1 = new Rectangle(475,790,20,15,"BLUE");
 	Rectangle leg2 = new Rectangle(425,790,20,15,"BLUE");		//Creation of user controlled Character ends here
 	
-	
-	
 	GameArena alpha = new GameArena (900, 800);
 	
 	alpha.addRectangle(head);	//Addition of protagonist begins here
 	alpha.addRectangle(body);
 	alpha.addRectangle(leg1);
 	alpha.addRectangle(leg2);	//Addition of protagonist ends here
-
 	
-	boolean userMovement;
-	boolean gun = false;
-	double shotFired = 0;
-	
-	//Ball bullet = new Ball(0,0,10,"RED");		//Bullet of protagonist
-	
-	Ball damn = new Ball(0,0,10,"RED");
+	Ball speed = new Ball(0,0,10,"WHITE");		//Ball for controlling speed
 	
 	Random case1 = new Random();
 	Random case2 = new Random();
+	Random case3 = new Random();
+	
+	//Creation of Bullets begins here
+	
+	Ball[] Nballs;
+	
+	Nballs = new Ball[50];
+		
+		for (int i = 0; i < 50; i++) {
+			
+			int x = case1.nextInt(882) + 18;
+			int y = case1.nextInt(782) + 18;
+			int col = case2.nextInt(12) + 1 ;
+			
+			String[] colour = {"#FF00CE","#00FF11","#FDFF00","#00FFD2","#FCFFC8","#FF9600","RED","#D00031","#C987EB","#E30066","#FFED00","#57AB27","#FFFFFF"};
+			
+			Nballs[i] = new Ball(x,y,10,colour[col]);
+		}
+	//Creation of Bullets end here
 	
 	
 	while (c == 0){
-	
+		
+	b = speed.getYPosition();
 	double h = b % 8; //this is to speed up the animation. By reducing the frequency at which this code is played
 	if (h == 0){
 		alpha.pause();
@@ -72,16 +82,23 @@ public class Main
 	
 	
 	//Code handling bullets shot starts here
-
 	if (alpha.upPressed()){
 		
-		damn.generateBullet(alpha);
-		
+		shotFired++;
+		alpha.pause();
 		}
 		
+	for (m = m; m < shotFired; m++) {
 		
-		
+		Nballs[m].setXPosition(head.getXPosition());
+		Nballs[m].setYPosition(head.getYPosition());
+		alpha.addBall(Nballs[m]);
+		}
+	for (int k = 0; k < shotFired; k++) {
+				
+		Nballs[k].ballmovement();
+		}
+		speed.ballmovement();
 	}
-	
 	}
 }
