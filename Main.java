@@ -13,17 +13,21 @@ public class Main
 	double bx = 0;
 	double by = 0;
 	int j = 0;
+	int i = 0;
 	
 	int shotFired = 0;
 	int m = 0;
 	
+	GameArena alpha = new GameArena (900, 800);
 	
 	Rectangle body = new Rectangle(450,775,70,20,"Blue");		//Creation of user controlled Character begins here
 	Rectangle head = new Rectangle(450,760,20,15,"RED");
 	Rectangle leg1 = new Rectangle(475,790,20,15,"BLUE");
 	Rectangle leg2 = new Rectangle(425,790,20,15,"BLUE");		//Creation of user controlled Character ends here
 	
-	GameArena alpha = new GameArena (900, 800);
+	Rectangle Border = new Rectangle(450,420,890,5,"#FFFFFF");		//Creation of Border
+	alpha.addRectangle(Border);										//Addition of Border
+
 	
 	alpha.addRectangle(head);	//Addition of protagonist begins here
 	alpha.addRectangle(body);
@@ -40,19 +44,37 @@ public class Main
 	
 	Ball[] Nballs;
 	
-	Nballs = new Ball[50];
+	Nballs = new Ball[200];
 		
-		for (int i = 0; i < 50; i++) {
+		for (i = 0; i < 200; i++) {
+			
+			int col = case2.nextInt(12) + 1 ;
+			String[] colour = {"#FF00CE","#00FF11","#FDFF00","#00FFD2","#FCFFC8","#FF9600","RED","#D00031","#C987EB","#E30066","#FFED00","#57AB27","#FFFFFF"};
+			
+			Nballs[i] = new Ball(0,0,10,"#FFFFFF");
+		}
+	//Creation of Bullets end here
+	
+	
+	//Creation & Addition of Baddies begin here
+	
+	Ball[] Baddies;
+	
+	Baddies = new Ball[10];
+		
+		for (i = 0; i < 10; i++) {
 			
 			int x = case1.nextInt(882) + 18;
-			int y = case1.nextInt(782) + 18;
+			int y = case1.nextInt(400) + 18;
 			int col = case2.nextInt(12) + 1 ;
 			
 			String[] colour = {"#FF00CE","#00FF11","#FDFF00","#00FFD2","#FCFFC8","#FF9600","RED","#D00031","#C987EB","#E30066","#FFED00","#57AB27","#FFFFFF"};
 			
-			Nballs[i] = new Ball(x,y,10,colour[col]);
+			Baddies[i] = new Ball(x,y,20,colour[col]);
+			alpha.addBall(Baddies[i]);
 		}
-	//Creation of Bullets end here
+				
+	//Creation & Addition of Baddies end here
 	
 	
 	while (c == 0){
@@ -82,7 +104,7 @@ public class Main
 	
 	
 	//Code handling bullets shot starts here
-	if (alpha.upPressed()){
+	if (alpha.spacePressed()){
 		
 		shotFired++;
 		alpha.pause();
@@ -96,7 +118,11 @@ public class Main
 		}
 	for (int k = 0; k < shotFired; k++) {
 				
-		Nballs[k].ballmovement();
+		Nballs[k].bulletmovement();
+		}
+	for (i = 0; i < 10; i++) {
+				
+		Baddies[i].ballmovement();
 		}
 		speed.ballmovement();
 	}
