@@ -111,7 +111,7 @@ public class Ball
 	public void ballmovement() {
 		
 		//Code handling movement begins here
-		/*
+		
 		if (directionX == 1) {
 			xPosition = this.xPosition + 1;
 		}
@@ -119,7 +119,39 @@ public class Ball
 			
 			xPosition = this.xPosition - 1;
 		}
-	*/
+		
+		if (directionY == 1) { 
+			
+			yPosition = this.yPosition + 1;
+		}
+		else if (directionY == 2) {
+			
+			yPosition = this.yPosition - 1;
+		}
+		
+		//Code handling movement ends here
+		
+		
+		//Code handling direction begins here
+		if (this.xPosition == 882) {
+		
+			directionX = 2;
+		}
+		else if (this.xPosition == 18) {
+			directionX = 1;
+		}
+	
+		if (this.yPosition == 400){
+			directionY = 2;
+		}
+		else if (this.yPosition == 18) {
+			directionY = 1;
+		}
+		//Code handling direction ends here
+
+		}
+	public void bulletmovement() {
+		
 		if (directionY == 1) { 
 			
 			yPosition = this.yPosition + 1;
