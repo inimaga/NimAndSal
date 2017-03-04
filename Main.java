@@ -104,7 +104,7 @@ public class Main
 	
 	
 	//Code handling bullets shot starts here
-	if (alpha.spacePressed()){
+	if (alpha.spacePressed() || alpha.upPressed()){
 		
 		shotFired++;
 		alpha.pause();
