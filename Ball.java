@@ -93,8 +93,9 @@ public class Ball
 	 //Addition of my code began here
 	
 	double directionX = 1;
-	double directionY = 1;
-	
+	double directionY = 2;
+	Random case3 = new Random();
+
 	GameArena alpha;
 	Ball[] Nballs;
 	Ball bullet;
@@ -107,10 +108,10 @@ public class Ball
 		colour = col;
 	}
 	
-	
 	public void ballmovement() {
 		
 		//Code handling movement begins here
+		/*
 		if (directionX == 1) {
 			xPosition = this.xPosition + 1;
 		}
@@ -118,7 +119,7 @@ public class Ball
 			
 			xPosition = this.xPosition - 1;
 		}
-	
+	*/
 		if (directionY == 1) { 
 			
 			yPosition = this.yPosition + 1;
@@ -127,6 +128,7 @@ public class Ball
 			
 			yPosition = this.yPosition - 1;
 		}
+		
 		//Code handling movement ends here
 		
 		
