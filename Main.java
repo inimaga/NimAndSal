@@ -44,9 +44,9 @@ public class Main
 	
 	Ball[] Nballs;
 	
-	Nballs = new Ball[200];
+	Nballs = new Ball[2000];
 		
-		for (i = 0; i < 200; i++) {
+		for (i = 0; i < 2000; i++) {
 			
 			int col = case2.nextInt(12) + 1 ;
 			String[] colour = {"#FF00CE","#00FF11","#FDFF00","#00FFD2","#FCFFC8","#FF9600","RED","#D00031","#C987EB","#E30066","#FFED00","#57AB27","#FFFFFF"};
@@ -125,6 +125,21 @@ public class Main
 		Baddies[i].ballmovement();
 		}
 		speed.ballmovement();
+//
+
+	for (int g = 0; g < m ; g++) {									//For each bullet
+	
+		for (i = 0; i < 10; i++) {							//Checking each Ball
+			if (Nballs[g].getXPosition() == Baddies[i].getXPosition() && Nballs[g].getYPosition() == Baddies[i].getYPosition()) {
+	
+				alpha.removeBall(Nballs[g]);
+				alpha.removeBall(Baddies[i]);
+			}
+		}
+	}
+
+//
+
 	}
 	}
 }
